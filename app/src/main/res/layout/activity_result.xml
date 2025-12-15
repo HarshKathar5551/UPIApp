@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/result_layout"
+    android:padding="32dp">
+
+    <ImageView
+        android:id="@+id/icon_status"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:contentDescription="Status Icon"
+        android:src="@drawable/ic_check_circle" /> <TextView
+    android:id="@+id/text_status_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/icon_status"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="24dp"
+    android:textSize="24sp"
+    android:textStyle="bold"
+    android:text="Transaction Status"
+    android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/text_reason"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_status_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:text="Reason/Fraud Engine Decision will be shown here."
+        android:textColor="@android:color/darker_gray"/>
+
+    <TextView
+        android:id="@+id/text_transaction_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_reason"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:textSize="14sp"
+        android:text="TXN ID: "/>
+
+    <Button
+        android:id="@+id/btn_done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Done / Go to Home"
+        android:padding="15dp"
+        android:backgroundTint="#0080FF"/>
+
+</RelativeLayout>

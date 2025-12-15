@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="32dp"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mini UPI Demo"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="40dp"
+        android:textColor="#0080FF"/>
+
+    <EditText
+        android:id="@+id/edit_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        android:maxLength="10"
+        android:padding="12dp"
+        android:background="@android:drawable/editbox_background"
+        android:layout_marginBottom="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="32dp">
+
+        <EditText
+            android:id="@+id/edit_otp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Enter OTP (1234)"
+            android:inputType="number"
+            android:padding="12dp"
+            android:background="@android:drawable/editbox_background"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/btn_send_otp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send OTP"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:backgroundTint="#CCCCCC"
+            android:enabled="false"/> </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:padding="15dp"
+        android:textSize="18sp"
+        android:backgroundTint="#0080FF"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="* This is a dummy login for testing. Use OTP 1234."
+        android:textSize="12sp"
+        android:textColor="@android:color/holo_red_dark"/>
+
+</LinearLayout>
