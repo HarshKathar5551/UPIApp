@@ -1,11 +1,18 @@
 package com.example.upiapp;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import com.example.upiapp.fragments.HomeFragment;
+import com.example.upiapp.fragments.MoneyFragment;
+import com.example.upiapp.fragments.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,34 +21,41 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize buttons
-        Button btnSendMoney = findViewById(R.id.btn_send_money);
-        Button btnHistory = findViewById(R.id.btn_history);
-        Button btnProfile = findViewById(R.id.btn_profile);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
 
-        // Navigation for Send Money Screen
-        btnSendMoney.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SendMoneyActivity.class));
-            }
-        });
-
-        // Navigation for Transaction History Screen
-        btnHistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, HistoryActivity.class));
-            }
-        });
-
-        // Navigation for Profile Screen
-        btnProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // We haven't created this activity yet, but we define the navigation
-                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-            }
-        });
+        // Load the default fragment (Home)
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new HomeFragment())
+                    .commit();
+        }
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
+                    int itemId = item.getItemId();
+
+                    if (itemId == R.id.nav_home) {
+                        selectedFragment = new HomeFragment();
+                    } else if (itemId == R.id.nav_money) {
+                        // This fragment will hold the History content
+                        selectedFragment = new MoneyFragment();
+                    } else if (itemId == R.id.nav_profile) {
+                        // This fragment will hold the Profile content
+                        selectedFragment = new ProfileFragment();
+                    }
+
+                    if (selectedFragment != null) {
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.fragment_container, selectedFragment)
+                                .commit();
+                        return true;
+                    }
+                    return false;
+                }
+            };
 }

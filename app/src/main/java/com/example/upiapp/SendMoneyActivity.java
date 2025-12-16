@@ -1,7 +1,5 @@
 package com.example.upiapp;
 
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +8,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.upiapp.models.Transaction;
 import com.example.upiapp.utils.LocalDataStore; // Import the utility class
 
 public class SendMoneyActivity extends AppCompatActivity {
@@ -58,23 +55,19 @@ public class SendMoneyActivity extends AppCompatActivity {
             return;
         }
 
-        // 1. Show Processing Screen (Simulated: No actual separate screen, just a delay/loader is needed) [cite: 93, 94, 95]
-        Toast.makeText(this, "Verifying transaction with Fraud Engine...", Toast.LENGTH_LONG).show();
+        // *** CRITICAL CHANGE: Redirect to ConfirmPinActivity ***
 
-        // 2. Simulate Fraud Detection Check (Backend call substitute)
-        // **This is the point where your friend's API call will eventually replace the line below.**
-        Transaction resultTransaction = dataStore.simulateFraudCheck(receiverId, amount, message);
+        Toast.makeText(this, "Transaction initiated. Enter UPI PIN to confirm.", Toast.LENGTH_SHORT).show();
 
-        // 3. Store Transaction (locally for history demo) [cite: 63]
-        dataStore.saveTransaction(resultTransaction);
+        Intent intent = new Intent(SendMoneyActivity.this, ConfirmPinActivity.class);
 
-        // 4. Navigate to Result Screen [cite: 96]
-        Intent intent = new Intent(SendMoneyActivity.this, ResultActivity.class);
-        intent.putExtra("STATUS", resultTransaction.getStatus());
-        intent.putExtra("REASON", resultTransaction.getReason());
-        intent.putExtra("TXN_ID", resultTransaction.getTransactionId());
-        intent.putExtra("RISK_SCORE", resultTransaction.getRiskScore());
+        // Pass all transaction data to the PIN confirmation screen
+        intent.putExtra("RECEIVER_ID", receiverId);
+        intent.putExtra("AMOUNT", amount);
+        intent.putExtra("MESSAGE", message);
+        intent.putExtra("IS_DEV_MODE", false); // Normal Mode flag
+
         startActivity(intent);
-        finish(); // Finish current activity to prevent going back to it
+        finish(); // Finish current activity
     }
 }

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -5,53 +6,40 @@
     android:padding="32dp"
     android:gravity="center_horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mini UPI Demo"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:layout_marginTop="50dp"
+    <FrameLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="60dp"
         android:layout_marginBottom="40dp"
-        android:textColor="#0080FF"/>
-
-    <EditText
-        android:id="@+id/edit_phone_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Phone Number"
-        android:inputType="phone"
-        android:maxLength="10"
-        android:padding="12dp"
-        android:background="@android:drawable/editbox_background"
-        android:layout_marginBottom="16dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="32dp">
-
-        <EditText
-            android:id="@+id/edit_otp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Enter OTP (1234)"
-            android:inputType="number"
-            android:padding="12dp"
-            android:background="@android:drawable/editbox_background"
-            android:layout_marginEnd="8dp"/>
-
-        <Button
-            android:id="@+id/btn_send_otp"
+        android:background="@drawable/circle_background">
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Send OTP"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:backgroundTint="#CCCCCC"
-            android:enabled="false"/> </LinearLayout>
+            android:text="App Logo"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center"
+            android:textSize="16sp"/>
+    </FrameLayout>
+
+    <EditText
+        android:id="@+id/edit_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mobile No. / UPI ID / Username"
+        android:inputType="text"
+        android:padding="14dp"
+        android:background="@drawable/edittext_border_bg"
+        android:layout_marginBottom="24dp"/>
+
+    <EditText
+        android:id="@+id/edit_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password (Demo: Any input)"
+        android:inputType="textPassword"
+        android:padding="14dp"
+        android:background="@drawable/edittext_border_bg"
+        android:layout_marginBottom="32dp"/>
 
     <Button
         android:id="@+id/btn_login"
@@ -60,14 +48,31 @@
         android:text="Login"
         android:padding="15dp"
         android:textSize="18sp"
-        android:backgroundTint="#0080FF"/>
+        android:backgroundTint="#673AB7"/>
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="* This is a dummy login for testing. Use OTP 1234."
-        android:textSize="12sp"
-        android:textColor="@android:color/holo_red_dark"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New User? "
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:id="@+id/text_signup_instead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up instead →"
+            android:textColor="#673AB7"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="4dp"/>
+    </LinearLayout>
 
 </LinearLayout>
