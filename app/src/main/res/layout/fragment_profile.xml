@@ -118,21 +118,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="30dp">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Developer Mode"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
 
-            <Switch
-                android:id="@+id/switch_developer_mode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:thumbTint="#0080FF"
-                android:trackTint="#CCCCCC"/>
         </LinearLayout>
 
     </LinearLayout>
